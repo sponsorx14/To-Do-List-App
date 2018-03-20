@@ -1,0 +1,120 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("https://images.unsplash.com/photo-1484359755660-c7ed8f31f0cc?ixlib=rb-0.3.5&s=6047be09599c0157abe2f5dc1973b367&auto=format&fit=crop&w=1355&q=100") no-repeat 0/cover;
+  height: 100vh;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+}
+
+.board {
+  margin: 0 auto;
+  text-align: center;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.board h1 {
+  padding: 30px;
+  margin: 0;
+  text-transform: uppercase;
+  color: #f23602;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.board button {
+  background-color: #ed5c34;
+  margin-top: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid #ed5c34;
+  -webkit-transition: 1s;
+  transition: 1s;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.board button:hover {
+  background-color: #f94b1b;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.board .column-container {
+  width: 100%;
+  padding: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.board .column {
+  width: calc(100% / 3 - 40px);
+  margin: 20px;
+  max-width: 33.3%;
+  padding: 10px;
+  background-color: rgba(255, 135, 33, 0.5);
+  border-radius: 20px;
+}
+
+.board .column h2 {
+  text-transform: uppercase;
+  color: #000;
+  font-size: 2rem;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+.board .column .card-list {
+  max-width: 100%;
+  min-height: 50px;
+}
+
+.board .column button {
+  color: #000;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 15px;
+}
+
+.board .card {
+  max-width: 100%;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.board .card p {
+  color: #000;
+  font-size: 1rem;
+  font-weight: 400;
+  max-width: 100%;
+  vertical-align: middle;
+  word-wrap: break-word;
+  cursor: move;
+}
+
+.board .card button {
+  margin: 0 10px;
+}
