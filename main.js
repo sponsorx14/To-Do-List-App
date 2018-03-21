@@ -56,7 +56,7 @@ $(function() {
       const columnTitle = $('<h2 class="column-title">' + self.name + '</h2>');
       const columnCardList = $('<ul class="card-list"></ul>');
       const columnAddCard = $('<button class="column-add-card">Add card</button>');
-      const columnDelete = $('<button class="btn-delete">x</button>');
+      const columnDelete = $('<i class="fas fa-trash"></i>');
 
       columnDelete.click(function() {
         self.deleteColumn();
@@ -113,7 +113,7 @@ $(function() {
 
     function createCard() {
       const card = $('<li class="card"></li>');
-      const cardDeleteBtn = $('<button class="btn-delete">x</button>');
+      const cardDeleteBtn = $('<i class="fas fa-trash"></i>');
       const cardDescription = $('<p class="card-description"></p>');
 
       cardDeleteBtn.click(function() {

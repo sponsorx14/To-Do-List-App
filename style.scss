@@ -1,8 +1,10 @@
 //  Code starts here
 
-$blue: #4286f4;
+$blue: #5e9bff;
+$light-blue: #75a7f9;
 $dark-blue: #124aa5;
 $black: #000;
+$white: #fff;
 $aqua: #135a6b;
 $light-aqua: #2aa2bf;
 $orange: #db6600;
@@ -21,7 +23,7 @@ $strong-red: #f23602;
 }
 
 body {
-  background: url('https://images.unsplash.com/photo-1484359755660-c7ed8f31f0cc?ixlib=rb-0.3.5&s=6047be09599c0157abe2f5dc1973b367&auto=format&fit=crop&w=1355&q=100') no-repeat 0/cover;
+  background: url('https://images.unsplash.com/photo-1511871893393-82e9c16b81e3?ixlib=rb-0.3.5&s=83748e82ca414c764ff1dae101f3e649&auto=format&fit=crop&w=1920&q=100') no-repeat 0/cover;
 	height: 100vh;
 	max-width: 100vw;
 	margin: 0;
@@ -31,25 +33,28 @@ body {
 .board {
   margin: 0 auto;
   text-align: center;
-  @include fonts($black, 1rem, 400);
-  h1 {
-    padding: 30px;
+  .board-title {
+    padding: 36px;
 		margin: 0;
     text-transform: uppercase;
-    @include fonts($strong-red, 2rem, 700);
+    @include fonts($black, 2.2rem, 700);
   }
-  button {
-    background-color: $red;
-		margin-top: 20px;
+
+  .create-column,
+  .column-add-card,
+  .fa-trash {
+    outline: none;
+    background-color: $blue;
+    margin-right: 5px;
     padding: 15px 20px;
     border-radius: 10px;
-    border: 1px solid $red;
+    border: none;
     -webkit-transition: 1s;
     transition: 1s;
-    @include fonts($black, 1rem, 700);
+    @include fonts($white, 1rem, 700);
     cursor: pointer;
     &:hover {
-      background-color: #f94b1b;
+      background-color: $light-blue;
       -webkit-transition: 1s;
       transition: 1s;
     }
@@ -76,39 +81,35 @@ body {
     margin: 20px;
     max-width: 33.3%;
     padding: 10px;
-    background-color: rgba(255, 135, 33, .5);
+    background-color: rgba(0, 0, 0, .5);
     border-radius: 20px;
-    h2 {
+    .column-title {
       text-transform: uppercase;
-      @include fonts($black, 2rem, 700);
+      @include fonts($white, 2rem, 700);
       word-wrap: break-word;
     }
-  .card-list {
-    max-width: 100%;
-    min-height: 50px;
-		}
-		button {
-			@include fonts($black, 1rem, 700);
-			padding: 10px 15px;
-		}
+    .card-list {
+      max-width: 100%;
+      min-height: 50px;
+  		}
+    }
+    .card {
+      max-width: 100%;
+  		list-style: none;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+        p {
+          @include fonts($white, 1.2rem, 400);
+          max-width: 100%;
+          margin: 0;
+          word-wrap: break-word;
+          cursor:move;
+        }
+    }
   }
-  .card {
-    max-width: 100%;
-		list-style: none;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-      p {
-        @include fonts($black, 1rem, 400);
-        max-width: 100%;
-        vertical-align: middle;
-        word-wrap: break-word;
-        cursor:move;
-      }
-      button {
-        margin: 0 10px;
-      }
-  }
-}
