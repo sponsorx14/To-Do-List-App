@@ -77,9 +77,9 @@ body {
 }
 
 .board .column-container .column {
-  min-width: 400px;
+  min-width: 350px;
   position: relative;
-  margin: 20px;
+  margin: 50px 20px;
   padding: 20px 10px;
   background-color: #e2e4e6;
   border-radius: 5px;
@@ -189,7 +189,7 @@ body {
   color: #fff;
   font-size: 1.2rem;
   font-weight: 400;
-  max-width: 350px;
+  max-width: 300px;
   word-wrap: break-word;
   cursor: move;
 }

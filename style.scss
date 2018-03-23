@@ -86,9 +86,9 @@ body {
     flex-direction: row;
 
     .column {
-      min-width: 400px;
+      min-width: 350px;
       position: relative;
-      margin: 20px;
+      margin: 50px 20px;
       padding: 20px 10px;
       background-color: $light-grey;
       border-radius: 5px;
@@ -184,7 +184,7 @@ body {
           p {
             padding-right: 30px;
             @include fonts($white, 1.2rem, 400);
-            max-width: 350px;
+            max-width: 300px;
             word-wrap: break-word;
             cursor: move;
           }

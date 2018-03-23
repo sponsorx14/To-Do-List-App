@@ -99,8 +99,9 @@ $(function() {
         }
       })
       columnAddCard.click(function(){
+        console.log();
         addCard();
-        document.querySelector('.column-input').value = '';
+        $(this.previousElementSibling).val('');
       });
 
       column.append(columnTitle)
