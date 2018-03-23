@@ -16,9 +16,8 @@ $(function() {
   	element: $('#board .column-container')
   };
 
-
-  $('.create-column').click(function() {
-      const columnName = prompt('Enter a column name');
+  function addColumn() {
+      let columnName = $('.create-column-input').val();
       $.ajax({
         url: baseUrl + '/column',
         method: 'POST',
@@ -30,7 +29,20 @@ $(function() {
           board.createColumn(column);
         }
       });
-    });
+    }
+
+
+  $('.create-column').click(function(){
+    addColumn();
+    document.querySelector('.create-column-input').value = '';
+  });
+  $('.create-column-input').keypress(function(e){
+    if(e.keyCode == 13){
+      e.preventDefault();
+      addColumn();
+      $(this).val('')
+    }
+  });
 
   $.ajaxSetup({
     headers: myHeaders
@@ -55,16 +67,13 @@ $(function() {
       const column = $('<div class="column"></div>');
       const columnTitle = $('<h2 class="column-title">' + self.name + '</h2>');
       const columnCardList = $('<ul class="card-list"></ul>');
-      const columnAddCard = $('<button class="column-add-card">Add card</button>');
-      const columnDelete = $('<i class="fas fa-trash"></i>');
+      const columnForm = $('<form class="column-form" action=""></form>')
+      const columnInput = $('<input class="column-input" type="text" placeholder="Add ad card" />')
+      const columnAddCard = $('<i class="fas fa-plus column-add-card"></i>');
+      const columnDelete = $('<i class="fas fa-trash column-delete"></i>');
 
-      columnDelete.click(function() {
-        self.deleteColumn();
-      });
-
-      columnAddCard.click(function(event){
-        const cardName = prompt("Enter the name of the card");
-        event.preventDefault();
+      function addCard(event){
+        const cardName = $(columnInput).val();
         $.ajax({
           url: baseUrl + '/card',
           method: 'POST',
@@ -77,12 +86,29 @@ $(function() {
             self.createCard(card);
           }
         });
+      }
+
+      columnDelete.click(function() {
+        self.deleteColumn();
+      });
+      columnInput.on('keydown',function(e){
+        if(e.keyCode ==13){
+          event.preventDefault();
+          addCard(e);
+          $(this).val('')
+        }
+      })
+      columnAddCard.click(function(){
+        addCard();
+        document.querySelector('.column-input').value = '';
       });
 
       column.append(columnTitle)
-        .append(columnAddCard)
         .append(columnDelete)
+        .append(columnForm)
         .append(columnCardList);
+
+      columnForm.append(columnInput).append(columnAddCard)
 
       return column;
     }
@@ -113,16 +139,19 @@ $(function() {
 
     function createCard() {
       const card = $('<li class="card"></li>');
-      const cardDeleteBtn = $('<i class="fas fa-trash"></i>');
+      const cardDeleteBtn = $('<i class="fas fa-trash card-trash"></i>');
       const cardDescription = $('<p class="card-description"></p>');
 
       cardDeleteBtn.click(function() {
         self.removeCard();
       });
+      card.click(function(){
+        $(this).toggleClass('done')
+      })
 
-      card.append(cardDeleteBtn);
       cardDescription.text(self.name);
       card.append(cardDescription);
+      card.append(cardDeleteBtn);
 
       return card;
     }

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>To do list</title>
-  <link href="https://fonts.googleapis.com/css?family=Spectral+SC:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
@@ -15,7 +15,10 @@
 <body>
     <div id="board" class="board">
       <h1 class="board-title">Kanban board</h1>
-      <button class="create-column">Add a column</button>
+      <form action="">
+        <input class='create-column-input' type="text" placeholder="Add a list">
+        <i class="fas fa-plus create-column"></i>
+      </form>
       <div class="column-container"></div>
     </div>
 

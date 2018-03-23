@@ -4,16 +4,14 @@
 }
 
 body {
-  background: url("https://images.unsplash.com/photo-1511871893393-82e9c16b81e3?ixlib=rb-0.3.5&s=83748e82ca414c764ff1dae101f3e649&auto=format&fit=crop&w=1920&q=100") no-repeat 0/cover;
-  height: 100vh;
-  max-width: 100vw;
+  background-color: #0079bf;
   margin: 0;
   padding: 0;
   font-size: 62.5%;
+  font-family: 'PT Sans', sans-serif;
 }
 
 .board {
-  margin: 0 auto;
   text-align: center;
 }
 
@@ -21,38 +19,48 @@ body {
   padding: 36px;
   margin: 0;
   text-transform: uppercase;
-  color: #000;
+  color: #fff;
   font-size: 2.2rem;
   font-weight: 700;
 }
 
-.board .create-column,
-.board .column-add-card,
-.board .fa-trash {
-  outline: none;
-  background-color: #5e9bff;
-  margin-right: 5px;
-  padding: 15px 20px;
-  border-radius: 10px;
-  border: none;
-  -webkit-transition: 1s;
-  transition: 1s;
+.board form {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.board .create-column-input {
+  padding: 20px 50px 20px 10px;
+  width: 100%;
   color: #fff;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 400;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   cursor: pointer;
 }
 
-.board .create-column:hover,
-.board .column-add-card:hover,
-.board .fa-trash:hover {
-  background-color: #75a7f9;
-  -webkit-transition: 1s;
-  transition: 1s;
+.board .create-column-input:focus, .board .create-column-input:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.board .create-column-input::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.board .create-column-input:-ms-input-placeholder {
+  color: #fff;
+}
+
+.board .create-column-input::placeholder {
+  color: #fff;
 }
 
 .board .column-container {
-  width: 100%;
   padding: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -68,30 +76,82 @@ body {
   flex-direction: row;
 }
 
-.board .column {
-  width: calc(100% / 3 - 40px);
+.board .column-container .column {
+  min-width: 400px;
+  position: relative;
   margin: 20px;
-  max-width: 33.3%;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
+  padding: 20px 10px;
+  background-color: #e2e4e6;
+  border-radius: 5px;
 }
 
-.board .column .column-title {
-  text-transform: uppercase;
+.board .column-container .column .column-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transform: translate(50%, -50%);
+  transform: translate(50%, -50%);
+  background-color: #75a7f9;
+  margin-right: 5px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.board .column-container .column .column-delete:hover {
+  background-color: #558eed;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.board .column-container .column .column-title {
+  text-transform: capitalize;
+  color: #333;
   font-size: 2rem;
   font-weight: 700;
   word-wrap: break-word;
+  margin: 0;
 }
 
-.board .column .card-list {
-  max-width: 100%;
-  min-height: 50px;
+.board .column-container .column .column-form {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
 }
 
-.board .card {
-  max-width: 100%;
+.board .column-container .column .column-form .column-input {
+  margin: 0 auto;
+  width: 90%;
+  padding: 10px 40px 10px 5px;
+  outline: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.board .column-container .column .column-form .column-add-card {
+  right: 15px;
+  color: #333;
+}
+
+.board .column-container .column .card-list {
+  padding: 0;
+  min-height: 60px;
+}
+
+.board .column-container .column .card-list .card {
+  padding: 0 10px;
+  margin-top: 20px;
+  background-color: rgba(0, 121, 191, 0.5);
+  position: relative;
+  border-radius: 10px;
+  cursor: pointer;
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -103,12 +163,70 @@ body {
   align-items: center;
 }
 
-.board .card p {
+.board .column-container .column .card-list .card .card-trash {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  opacity: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  -webkit-transform: translate(-25%, -50%);
+  transform: translate(-25%, -50%);
+}
+
+.board .column-container .column .card-list .card .card-trash:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.board .column-container .column .card-list .card p {
+  padding-right: 30px;
   color: #fff;
   font-size: 1.2rem;
   font-weight: 400;
-  max-width: 100%;
-  margin: 0;
+  max-width: 350px;
   word-wrap: break-word;
   cursor: move;
+}
+
+.board .column-container .column .card-list .card:hover .card-trash {
+  opacity: 1;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.board .column-container .column .card-list .card.done {
+  text-decoration: line-through;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.board .column-container .column .card-list .card.done p {
+  color: #333;
+}
+
+.board .column-container .column .card-list .card.done .card-trash {
+  color: #333;
+}
+
+.fa-plus {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: translate(-25%, -50%);
+  transform: translate(-25%, -50%);
+}
+
+.fa-plus:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
