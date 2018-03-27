@@ -77,7 +77,8 @@ body {
 }
 
 .board .column-container .column {
-  min-width: 340px;
+  min-width: 300px;
+  max-width: 320px;
   position: relative;
   margin: 50px 20px;
   padding: 20px 10px;
